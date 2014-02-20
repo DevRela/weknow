@@ -1,0 +1,129 @@
+    /*生成命令:
+$ dot -Tpng gdg_fsm_map.dot -o gdg_fsm_map.png
+ -Tcmapx -o lb-crx-roles.map
+全局设定::
+    plaintext
+    */
+
+digraph G4gdg_fsm_map {
+    /*全局设定*/
+    graph [label="珠海GDG公众号自动应答 SFM {状态变迁图谱}"
+        ,fontsize=14.0
+        ,fontname="WenQuanYi Micro Hei"
+        ,fontcolor="#555555"
+        ,labeljust="l",labelloc="t",center=1
+        ,ranksep=0.2,center=1,ratio=compress
+        ,rankdir=LR
+        ];
+
+    node[fontsize=11.0,height=0.2
+        ,fontname="WenQuanYi Micro Hei"
+        ,shape=component 
+        ];
+
+    edge [fontsize=9.0,fontcolor="#333333"
+        ,fontname="WenQuanYi Micro Hei"
+        ,arrowsize=0.6,arrowhead=vee,arrowtail=none
+        ,style="setlinewidth(0.5)"
+        ];
+/*
+    src [label="源码",shape=ellipse,style="filled,dashed,setlinewidth(5)"
+        ,color="#333333",fillcolor=dimgray
+        ,URL="http://code.google.com/p/zoomquiet/source/browse/dot/obp/csdndr1-km.dot?repo=tangle"];
+    /*图元声明
+    start       [label="流程开始/结束",shape=point];
+    end         [label="",shape=doublecircle,fillcolor=red];
+
+    box         [label="实体/对象",shape=box];
+    ellipse     [label="行动/节点",shape=ellipse];
+    egg         [label="用户/人物",shape=egg];
+    plaintext   [label="状态/属性",shape=plaintext,fillcolor=whitesmoke];
+    diamond     [label="判别",shape=diamond];
+    note        [label="注释",shape=note];
+    tab         [label="目录/模块",shape=tab];
+    db          [label="数据库",shape=box3d];
+    component   [label="主机/组件",shape=component];
+  ,style="rounded,dotted"];
+    CONFIRM_REG [label="ce 确认参加活动",shape=component];
+*/
+
+    start       [label="",shape=plaintext];
+    setup       [label="setup",shape=component];
+    end         [label="end",shape=doublecircle];
+
+    HELP [label="h\n打印帮助",shape=component];
+    VERSION [label="V\n查看系统版本",shape=component];
+
+    CANCEL [label="*\n退出",shape=component];
+
+    EVENT [label="e\n活动查询",shape=component];
+    REG_EVEN [label="re\n活动报名",shape=component];
+    REG_CANCEL [label="rc\n放弃报名",shape=component];
+
+    INFO_REG [label="ri\n确认报名",shape=component];
+
+    ME [label="i 查阅成员资料",shape=component];
+        isINFO [label="注册过\n个人资料?",shape=diamond];
+    ME_INFO [label="ei\n修订成员资料",shape=component];
+        ME_ALIAS [label="提示输入\n妮称",shape=component];
+        ME_EM [label="提示输入\n邮箱",shape=component];
+
+    SEEK [label="s\n查阅文章",shape=component];
+        GB [label="gb\nG术图书",shape=note];
+        DD [label="dd\nD码点评",shape=note];
+        GT [label="gt\nG说公论",shape=note];
+        DM [label="dm\n珠的自白",shape=note];
+        HD [label="dm\n珠的自白",shape=note];
+        ET [label="et\n活动回顾",shape=note];
+        OT [label="ot\n其它各种",shape=note];
+            TAG [label="输入编号\n查阅分类列表",shape=note];
+            PLI [label="分类文章列表",shape=tab];
+            PID [label="输入序号\n查阅具体文章",shape=note];
+            EXP [label="输出图文链接",shape=tab];
+
+    /*图例关系
+    srvPUB->installer [label="2.0",style="dotted"];
+            ME_EM->ME_CONFIRM;
+    ECHO_INFO [label="回报相关资料",shape=note];
+    */
+    start->setup [color="#555555",style="dashed,setlinewidth(4)"];
+    
+    setup->{EVENT REG_EVEN ME ME_INFO INFO_REG REG_CANCEL SEEK HELP VERSION} [style="setlinewidth(2)"];
+        {INFO_REG REG_EVEN ME REG_CANCEL}->isINFO;
+            isINFO->end [label="N\n未创建",fontcolor=red,color=red];
+            isINFO->end [label="Y\n回报相关资料",fontcolor=blue,color=blue,style="setlinewidth(2)"];
+        ME_INFO->ME_ALIAS->ME_EM;
+
+    {ME_EM VERSION}->end;
+        EVENT->end [color=blue,style="setlinewidth(1)"];
+
+    {ME_ALIAS ME_EM TAG PID}->CANCEL->end [color=red,style="dotted"];
+
+    SEEK->{GB DD GT DM HD ET OT}->TAG->PLI->PID->EXP->end [color=blue];
+        TAG->TAG [label="错误,重试",fontcolor=red,color=red];
+        PID->PID [label="错误,重试",fontcolor=red,color=red];
+
+    {ME_ALIAS ME_EM TAG PID}->HELP [color=blue,style="dotted"];
+        HELP->end [color=blue];
+
+
+
+
+/*
+    { rank=same; PUB    srvA srvB srvN; }
+    { rank=same; DL     installer; }
+    { rank=same; CHK    chker; }
+    { rank=same; DONE   bkStore; }
+
+    PUB[label="发布阶段",shape=plaintext];
+    DL[label="下载阶段",shape=plaintext];
+    CHK[label="检查阶段",shape=plaintext];
+    DONE[label="完成阶段",shape=plaintext];
+        PUB->DL->CHK->DONE;
+
+        srvPUB->srvAC;
+        srvA->srvB->srvN;
+*/
+    edge [style=invis];
+}
+
