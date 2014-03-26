@@ -26,7 +26,7 @@ class Borg():
     def __init__(self):
         self.__dict__ = self.__collective_mind
     
-    VERSION = "weknow v14.2.20.1"
+    VERSION = "weknow v14.3.26.15"
     
     #管理员邮箱列表
     ADMIN_EMAIL_LIST = ['zoomquiet+gdg@gmail.com']
@@ -140,12 +140,11 @@ class Borg():
 
 
     ESSAY_TAG = {'ot':u" ~ 其它 (其余文章,AT也很好;)"
-        , 'gb':u" ~ G术图书 (推荐好书,书无中外)"
-        , 'dd':u" ~ D码点评 (麻辣评点,善意满盈)"
-        , 'gt':u" ~ G说公论 (时评杂文,新旧不拘)"
-        , 'dm':u" ~ 珠的自白 (大妈自述,每周一篇)"
-        , 'hd':u" ~ 海选文章 (得要相信,大妈法眼)"
-        , 'et':u" ~ 活动报道 (快乐大趴,给力小会)"
+        , 'fv':u" ~ 开 宗明利 (老范主持,专说价值外)"
+        , 'dl':u" ~ 发 现学习 (小江值班,分享成长)"
+        , 'es':u" ~ 诸 般活动 (玮姐轮岗,感动真人)"
+        , 'ac':u" ~ 关 乎社群 (大妈自述,每周一篇)"
+        , 'it':u" ~ 系 为暗思 (全体随意,包罗万象)"
         }
         
     # 文章索引
@@ -475,27 +474,25 @@ class Borg():
         , "fix/dm":     "PUT"       # 修订 大妈 信息
         , "fix/m":      "PUT"       # 修订 成员 信息
         , "fix/e":      "PUT"       # 增补 活动 信息
-        , "fix/p/gb":   "PUT"       # 增补 gb文章 信息
-        , "fix/p/dd":   "PUT"       # 增补 dd文章 信息
-        , "fix/p/gt":   "PUT"       # 增补 gt文章 信息
-        , "fix/p/dm":   "PUT"       # 增补 dm文章 信息
-        , "fix/p/hd":   "PUT"       # 增补 hd文章 信息
+        , "fix/p/fv":   "PUT"       # 增补 gb文章 信息
+        , "fix/p/dl":   "PUT"       # 增补 dd文章 信息
+        , "fix/p/es":   "PUT"       # 增补 gt文章 信息
+        , "fix/p/ac":   "PUT"       # 增补 dm文章 信息
+        , "fix/p/it":   "PUT"       # 增补 hd文章 信息
         , "fix/p/ot":   "PUT"       # 增补 其它文章 信息
-        , "fix/p/et":   "PUT"       # 增补 活动文章 文章
 
+        , "sum/p/fv":   "GET"       # 统计 分类文章 信息现状
+        , "sum/p/dl":   "GET"       # 统计 分类文章 信息现状
+        , "sum/p/es":   "GET"       # 统计 分类文章 信息现状
+        , "sum/p/ac":   "GET"       # 统计 分类文章 信息现状
+        , "sum/p/it":   "GET"       # 统计 分类文章 信息现状
+        , "sum/p/ot":   "GET"       # 统计 分类文章 信息现状
         , "sum/his":    "GET"       # 统计 历史 索引现状
         , "sum/db":     "GET"       # 统计 整体 信息现状
         , "sum/dm":     "GET"       # 统计 大妈 信息现状
         , "sum/m":      "GET"       # 统计 成员 信息现状
         , "sum/e":      "GET"       # 统计 活动 信息现状
         , "sum/p":      "GET"       # 统计 文章 信息现状
-        , "sum/p/gb":   "GET"       # 统计 分类文章 信息现状
-        , "sum/p/dd":   "GET"       # 统计 分类文章 信息现状
-        , "sum/p/gt":   "GET"       # 统计 分类文章 信息现状
-        , "sum/p/dm":   "GET"       # 统计 分类文章 信息现状
-        , "sum/p/hd":   "GET"       # 统计 分类文章 信息现状
-        , "sum/p/ot":   "GET"       # 统计 分类文章 信息现状
-        , "sum/p/et":   "GET"       # 统计 分类文章 信息现状
         , "del/p":      "DELETE"    # 删除指定文章
 
         

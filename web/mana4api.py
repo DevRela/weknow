@@ -265,21 +265,26 @@ def revert_dump(matter):
     - CLI.py -D revert/db set=...   导入备份
     - CLI.py -D resolve/wx set=all  检查反指 K/V 对
     '''
-    
     q_dict = request.forms
     if _chkQueryArgs("/cli/revert/%s"% matter, q_dict, "PUT"):
         feed_back = {'data':[]}
         set_key = list(set(q_dict.keys())-set(CFG.SECURE_ARGS))[0]
         set_var = base64.urlsafe_b64decode(request.forms[set_key])
         #print set_key, set_var
+        #return None
         if 'db' ==  matter:
             print "try revert ALL date from KVDB"
-            dumps = BK.get_object_contents(set_var)
+            #open(set_var).read()
+            dumps = open(set_var).read()#BK.get_object_contents(set_var)
             re_obj = cPickle.loads(dumps)
+            print re_obj
             feed_back['msg'] = "reverted %s nodes for whole KVDB "% len(re_obj.keys())
             _INX_KEYS = [CFG.K4D[k] for k in CFG.K4D.keys()]
             # replace global idx K/V, maybe make ghost K/V
-            _his = set()#KV.get(CFG.K4D['his'])            
+            _his = set()#KV.get(CFG.K4D['his'])  
+            print re_obj.keys()
+            #return None
+                     
             for k in re_obj.keys():
                 if k in _INX_KEYS:
                     # 索引键处理
@@ -308,6 +313,7 @@ def revert_dump(matter):
             KV.set(CFG.K4D['his'], list(_his) )
             #print KV.get(CFG.K4D['his'])
 
+            print KV.get_info()
 
 
         else:
@@ -335,8 +341,9 @@ def revert_dump(matter):
 
 
 
-                    
-        feed_back['data'].append( BK.stat_object(set_var) )
+                        
+        feed_back['data'].append( KV.get_info())
+        #BK.stat_object(set_var) )
         #data.append(KV.get_info())
         return feed_back
     else:
@@ -478,32 +485,43 @@ def push_papers(qstr):
     #print f_name, f_ext
     set_var = q_file.file.read()
     if _chkQueryArgs("/cli/push/p", q_dict, "POST"):
-        feed_back = {'data':[]}
+        feed_back = {'data':[], 'msg':''}
         #set_key = list(set(q_form.keys())-set(CFG.SECURE_ARGS))[0]
         #set_var = base64.urlsafe_b64decode(request.forms[set_key])
-        j = eval(set_var) #, set_var
-        p_tag = j.keys()[0]
-        #print j.keys()
+        all_old_p = KV.get(CFG.K4D['p'])
+        feed_back['msg'] += "del. all old:%s POSTs;"% len(all_old_p)
+        for p in all_old_p:
+            crt_p = KV.get(p)
+            crt_p['del'] = 1
+            KV.replace(p, crt_p)
+            #print p, KV.get(p)
         #return None
-        for paper in j[p_tag]:
-            uuid = GENID(p_tag)
-            feed_back['data'].append(uuid)
-            #print uuid
-            new_paper = deepcopy(CFG.K4WD)
-            new_paper['uuid'] = uuid # 对象创建时, 变更时间戳同 UUID
-            new_paper['his_id'] = uuid
-            new_paper['lasttm'] = time.time()
-            new_paper['tag'] = p_tag
-            new_paper['title'] = paper['title']
-            new_paper['url'] = paper['uri']
-            new_paper['picurl'] = paper['picuri']
-            new_paper['code'] = paper['code']
-            KV.add(uuid, new_paper)
-            ADD4SYS('p', uuid)
-            #print uuid, new_paper
+        #j = json.loads(set_var)
+        j = eval(set_var) #, set_var
+        p_tags = j.keys()#[0]
+        count = 0
+        print j.keys()
+        for p_tag in p_tags:
+            for paper in j[p_tag]:
+                count += 1
+                uuid = GENID(p_tag)
+                feed_back['data'].append(uuid)
+                #print uuid
+                new_paper = deepcopy(CFG.K4WD)
+                new_paper['uuid'] = uuid # 对象创建时, 变更时间戳同 UUID
+                new_paper['his_id'] = uuid
+                new_paper['lasttm'] = time.time()
+                new_paper['tag'] = p_tag
+                new_paper['title'] = paper['title']
+                new_paper['url'] = paper['uri']
+                new_paper['picurl'] = paper['picuri']
+                new_paper['code'] = paper['code']
+                KV.add(uuid, new_paper)
+                ADD4SYS('p', uuid)
+                #print uuid, new_paper
 
         #feed_back['data'].append( BK.stat_object(sid) )
-        feed_back['msg'] = "uploaded %s papers info."% len(j[p_tag])
+        feed_back['msg'] += "reloaded %s POSTs."% count
         #data.append(KV.get_info())
         return feed_back
     else:
@@ -1194,19 +1212,18 @@ def __putFW(pp, msg):
 
 
 @state('weknow')
-@transition('gb', 'papers')
-@transition('dd', 'papers')
-@transition('gt', 'papers')
-@transition('dm', 'papers')
-@transition('hd', 'papers')
-@transition('et', 'papers')
+@transition('fv', 'papers')
+@transition('dl', 'papers')
+@transition('es', 'papers')
+@transition('ac', 'papers')
+@transition('it', 'papers')
 @transition('ot', 'papers')
 @transition('q', 'helpme')
 @transition('Q', 'helpme')
 @transition('h', 'helpme')
 @transition('H', 'helpme')
 def seek(self, wxreq):
-    print 'setup->seek->{gb dd gt dm ot q h} '
+    print 'setup->seek->{fv dl es ac it ot q h} '
     crt_usr = wxreq.crt_usr
     #print "G_CRT_USR", crt_usr
     if wxreq.Content in CFG.PAPER_TAGS:

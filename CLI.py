@@ -20,7 +20,6 @@ e.g:
   $ python CLI.py 事务指令 [可能的值设定 set=** 形式]
   详细操作::
   echo set=i                模拟微信的消息交互
-
   info/:UUID                查阅指定 信息
   find/m/<key word>         搜索用户 [对 名称,描述 搜索]
   st/kv     查询 KVDB 整体现状
@@ -29,30 +28,16 @@ e.g:
     sum/p/:TAG 综合 分类文章 信息现状
   fix/dm/:NM  nm=ZQ         修订/创建指定 大妈 的相关信息
   fix/m|e/:UUID nm=ZQ       修订指定 成员|活动 的相关信息
-  fix/p/:TAG/:UUID url=***  增补|指定 文章 信息
-    TAG当前支持 ot|et|gt|dd|gb|dm|hd
-    UUID 为 null 时,指创建文章信息
-  del/p/:UUID   删除指定文章
-  fw/ll         模拟 大妈 刷 成员抄发消息
-  fw/dd/:UUID   模拟 指成员 刷 大妈回复
-  fw/mm/:ZIP set='订户编号'   
-                模拟 大妈 忽略指定消息
-  fw/aa/:ZIP set='回答内容'    
-                模拟 大妈 回复指定消息
-  
+
   !!! 小心:大规模数据I/O操作 !!!
   push/p json=path/2/x.json 提交批量文章数据文件
   bk/db|dm|m|e|p
      备份 KVDB|大妈|成员|活动|文章 数据到Storage
   del/bk/:UUID              删除指定备份 dump
-  revert/db|dm|m|e|p    set=备份dump
+  revert/db|dm|m|e|p    set='path/2/备份.dump'
      恢复 KVDB|大妈|成员|活动|文章 数据到Storage
   resolve/his|wx|fw        set=all       
     重建 HIS|Passpord|FW 全局索引内容
-
-益rz...
-  wx/ls             通过 服务号测试接口 获取关注列表 
-  wx/usr/:openid    通过 服务号测试接口 获取指定关注用户信息
 """
 import sys
 import os
@@ -393,4 +378,21 @@ if __name__ == '__main__':
     #print sets
     smart_rest(metter, sets)
     #_rest_main(method, uri, args)
+'''
+  fix/p/:TAG/:UUID url=***  增补|指定 文章 信息
+    TAG当前支持 ot|fv|dl|es|ac|it
+    UUID 为 null 时,指创建文章信息
+  del/p/:UUID   删除指定文章
 
+  fw/ll         模拟 大妈 刷 成员抄发消息
+  fw/dd/:UUID   模拟 指成员 刷 大妈回复
+  fw/mm/:ZIP set='订户编号'   
+                模拟 大妈 忽略指定消息
+  fw/aa/:ZIP set='回答内容'    
+                模拟 大妈 回复指定消息
+  
+益rz...
+  wx/ls             通过 服务号测试接口 获取关注列表 
+  wx/usr/:openid    通过 服务号测试接口 获取指定关注用户信息
+
+'''

@@ -1,0 +1,165 @@
+{
+#/*///////////////////////////////////////////////////////////////
+#//  FV 开 宗明利
+#///////////////////////////////////////////////////////////////*/
+    "fv":[{"type":"txt"
+            , "title":"老范主持"
+            , "code":0
+            , "uri": "http://devrel.info/2014-02/fv0-luckefan/"
+            , "picuri": "http://tp2.sinaimg.cn/1702250953/180/5619491524/1"
+        }
+        , {"type":"txt"
+            , "title":"初探"
+            , "code":1
+            , "uri":"http://devrel.info/2014-02/fv1-lukefan/"
+            , "picuri":"http://lukefan.qiniudn.com/developer.jpg"
+            }
+        , {"type":"txt"
+            , "title":"开发者社区的目标和KPI机器"
+            , "code":2
+            , "uri":"http://devrel.info/2014-02/fv2-lukefan/"
+            , "picuri":"http://lukefan.qiniudn.com/kpi.jpg"
+            }
+        , {"type":"txt"
+            , "title":"企业为什么会关注技术社区"
+            , "code":3
+            , "uri":"http://devrel.info/2014-03/fv3-lukefan/"
+            , "picuri":"http://lukefan.qiniudn.com/rel.jpg"
+            }
+        , {"type":"txt"
+            , "title":"企业建立的技术社区"
+            , "code":4
+            , "uri":"http://devrel.info/2014-03/fv4-lukefan/"
+            , "picuri":"http://lukefan.qiniudn.com/qiyeshequ2.jpg"
+            }
+        , {"type":"txt"
+            , "title":"社区规则初探"
+            , "code":5
+            , "uri":"http://devrel.info/2014-03/fv5-lukefan/"
+            , "picuri":"http://lukefan.qiniudn.com/3dchess.jpg"
+            }
+    ]
+#/*///////////////////////////////////////////////////////////////
+#//  DL 发 现学习
+#///////////////////////////////////////////////////////////////*/
+    , "dl":[{"type":"txt"
+            , "title":"分享成长"
+            , "code":0
+            , "uri": "http://devrel.info/2014-02/dl0-jb/"
+            , "picuri": ""
+            }
+        , {"type":"txt"
+            , "title":"如何录好一个演讲视频"
+            , "code":1
+            , "uri":"http://devrel.info/2014-03/dl1-use-camtasia-create-video/"
+            , "picuri":"http://ww1.sinaimg.cn/large/675f4a91tw1eei5cxolakj20hy069t96.jpg"
+            }
+    ]
+#/*///////////////////////////////////////////////////////////////
+#//  ES 诸 般活动
+#///////////////////////////////////////////////////////////////*/
+    , "es":[{"type":"txt"
+            , "title":"感动真人"
+            , "code":0
+            , "uri": "http://devrel.info/2014-02/es0-ww/"
+            , "picuri": "http://w3ctech.com/b/wp-content/uploads/2010/10/yinsu.jpg"
+            }
+        , {"type":"txt"
+            , "title":"开发者社区之间的信任"
+            , "code":1
+            , "uri":"http://devrel.info/2014-03/es1-ww-trust/"
+            , "picuri":"http://lbtc.qiniudn.com/wangwei/trust/1.jpg"
+            }
+    ]
+#/*///////////////////////////////////////////////////////////////
+#//  AC 关 乎社群
+#///////////////////////////////////////////////////////////////*/
+    , "ac":[{"type":"txt"
+            , "title":"大妈自述"
+            , "code":0
+            , "uri": "http://devrel.info/2014-02/ac0-zq/"
+            , "picuri": "http://pyconcn.qiniudn.com/images/volunteer/zhouqi.png"
+            }
+        , {"type":"txt"
+            , "title":"什么是社区"
+            , "code":1
+            , "uri":"http://devrel.info/2014-02/ac1-zq/"
+            , "picuri":"http://upload.wikimedia.org/wikipedia/en/0/09/Community_title.jpg"
+            }
+        , {"type":"txt"
+            , "title":"什么是技术社区"
+            , "code":2
+            , "uri":"http://devrel.info/2014-02/ac2-tech-community/"
+            , "picuri":"http://static.open-open.com/news/uploadImg/20120204/20120204101959_290.jpg"
+            }
+        , {"type":"txt"
+            , "title":"技术社区的生命周期"
+            , "code":3
+            , "uri":"http://devrel.info/2014-03/ac3-lifestyle/"
+            , "picuri":"http://www.mariposasmonarca.com/fotos/ciclo-vida-mariposa-monarca.jpg"
+            }
+        , {"type":"txt"
+            , "title":"技术生物的特征"
+            , "code":4
+            , "uri":"http://devrel.info/2014-03/ac4-nerd/"
+            , "picuri":"http://www.hobsons.com/uploads/hobsons_blog_nerd.gif"
+            }
+        , {"type":"txt"
+            , "title":"技术社区的一般结构"
+            , "code":5
+            , "uri":"http://devrel.info/2014-03/ac5-structure101/"
+            , "picuri":"http://zoomq.qiniudn.com/ZQCollection/map/obp-livcycle.png"
+            }
+        , {"type":"txt"
+            , "title":"奢侈品在技术社区"
+            , "code":6
+            , "uri":"http://devrel.info/2014-03/ac6-luxury-important/"
+            , "picuri":"http://image.knewone.com/photos/826e10343af8de6af7fc6a73d1884ee0.jpeg"
+            }
+        , {"type":"txt"
+            , "title":"技术社区的性格"
+            , "code":7
+            , "uri":"http://devrel.info/2014-03/ac7-community-character/"
+            , "picuri":"http://www.soulv.com/ztimg/allimg/120112/1-1201121F559161.jpg"
+            }
+            
+    ]
+#/*///////////////////////////////////////////////////////////////
+#//  IT 系 为暗思
+#///////////////////////////////////////////////////////////////*/
+    , "it":[{"type":"txt"
+            , "title":"包罗万象"
+            , "code":0
+            , "uri": "http://devrel.info/2014-02/it0-chaos/"
+            , "picuri": "http://fc07.deviantart.net/fs20/i/2007/257/7/e/Chaos_by_ClaireJones.jpg"
+            }
+        , {"type":"txt"
+            , "title":"开源社区的创立与运作@ghosTM55"
+            , "code":1
+            , "uri":"http://devrel.info/2010-11/it1-oss-community/"
+            , "picuri":"http://ossc.org.cn/sites/default/files/slide0039_image018.png"
+            }
+        , {"type":"txt"
+            , "title":"企业开源杂谈@思考IT"
+            , "code":2
+            , "uri":"http://devrel.info/2013-08/it2-oss4com/"
+            , "picuri":"http://zoomq.qiniudn.com/logos/qrcode_for_devrel_430.jpg"
+            }
+        , {"type":"txt"
+            , "title":"如何定量的评价一个技术社区的优劣@思考IT"
+            , "code":3
+            , "uri":"http://devrel.info/2014-03/it2-quantize-community/"
+            , "picuri":"http://zoomq.qiniudn.com/ZQCollection/map/devrel_quantize.jpg"
+            }
+    ]
+#/*///////////////////////////////////////////////////////////////
+#//  OT 其它
+#///////////////////////////////////////////////////////////////*/
+    , "ot":[{"type":"txt"
+            , "title":"你好,世界"
+            , "code":0
+            , "uri": "http://devrel.info/2012-12/hello-world/"
+            , "picuri": "http://news.filehippo.com/wp-content/uploads/2013/02/github.jpg"
+            }
+    ]
+}

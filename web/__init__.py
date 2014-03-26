@@ -9,8 +9,8 @@ from bottle import jinja2_template as template
 from config import JINJA2TPL_PATH
 TEMPLATE_PATH.insert(0, JINJA2TPL_PATH)
 
-
 from config import CFG
+debug(True)
 APP = Bottle()
 
 #APP.mount('/up', __import__('mana4up').APP)
@@ -18,10 +18,15 @@ APP.mount('/api', __import__('mana4api').APP)
 #APP.mount('/mana', __import__('mana4sys').APP)
 
 
-@APP.route('/')
 #@view('404.html')
+@APP.get('/')
 def index():
-    return template('index.html')
+    #return template('index.html')
+    return """%s 
+    esp. support wechat public No.: DevRel
+    ; only API service !-)
+    contact: sipport@devrel.info
+    """% CFG.VERSION
 
 #@view('404.html')
 @APP.error(404)
